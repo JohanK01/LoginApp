@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const port = 8042;
+const PORT = process.env.PORT || 8082;
 
 const appRouter = require('./router/login');
 
@@ -12,5 +12,6 @@ app.use(express.static('public'));
 
 app.use('/', appRouter);
 
-app.listen(port);
-console.log('server is alive on port: ' + port);
+app.listen(PORT, () => {
+    console.log(`the app listen to ${PORT}`);
+})
